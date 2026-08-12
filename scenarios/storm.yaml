@@ -1,0 +1,30 @@
+name: storm
+controller: mpc
+simulation:
+  seed: 7
+  horizon_hours: 240
+  dt_hours: 1.0
+  check_invariants: true
+weather:
+  scenario: storm
+  latitude_deg: 50.0
+  start_day_of_year: 172
+forecast:
+  bias_wm2: 55
+  noise_std_wm2: 70
+  ar1_phi: 0.78
+  failure_start_hour: 78
+  failure_duration_hours: 16
+  horizon_hours: 48
+mpc:
+  horizon_hours: 36
+  soc_reserve: 0.25
+faults:
+  faults:
+    - type: electrolyser_efficiency
+      start_hour: 120
+      severity: 0.35
+    - type: sensor_drift
+      start_hour: 144
+      component: hydrogen_flow
+      severity: 1.2

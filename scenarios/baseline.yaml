@@ -1,0 +1,15 @@
+name: baseline
+controller: mpc
+simulation:
+  seed: 42
+  horizon_hours: 240
+weather:
+  scenario: mixed
+forecast:
+  bias_wm2: 25
+  noise_std_wm2: 50
+  horizon_hours: 36
+mpc:
+  horizon_hours: 24
+faults:
+  faults: []

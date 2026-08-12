@@ -1,0 +1,37 @@
+name: cascade
+controller: mpc
+simulation:
+  seed: 11
+  horizon_hours: 240
+  dt_hours: 1.0
+weather:
+  scenario: cascade
+  latitude_deg: 50.0
+forecast:
+  bias_wm2: 80
+  noise_std_wm2: 90
+  ar1_phi: 0.8
+  horizon_hours: 36
+mpc:
+  horizon_hours: 24
+  soc_reserve: 0.28
+plant:
+  battery:
+    initial_soh: 0.92
+  thermal:
+    initial_temperature_c: 32.0
+faults:
+  faults:
+    - type: battery_capacity
+      start_hour: 24
+      severity: 0.30
+    - type: electrolyser_efficiency
+      start_hour: 48
+      severity: 0.25
+    - type: methanation_thermal
+      start_hour: 72
+      severity: 0.20
+    - type: solar_shading
+      start_hour: 96
+      end_hour: 132
+      severity: 0.30
