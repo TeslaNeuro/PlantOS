@@ -29,3 +29,6 @@ frontend/.vite/
 .idea/
 .vscode/
 *.swp
+
+.cursor/
+.cursorignore

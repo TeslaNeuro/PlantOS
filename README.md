@@ -38,7 +38,7 @@ The controller never receives the actual future weather.
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -e ".[dev]"
+pip install -e ".[dev]" --config-settings editable_mode=compat
 pytest -q
 plantos simulate --scenario storm --controller mpc
 plantos compare --scenario storm
