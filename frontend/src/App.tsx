@@ -70,10 +70,10 @@ function Spark({
         </g>
       ))}
       <line className="chart-grid" x1={padL} y1={padT + innerH} x2={w - padR} y2={padT + innerH} />
-      <text className="chart-axis ch4" x={padL + 4} y={padT + 11}>
+      <text className="chart-axis ch4" x={padL + 255} y={padT - 2}>
         {maxM.toFixed(0)} kg/h
       </text>
-      <text className="chart-axis solar" x={w - padR - 4} y={padT + 11} textAnchor="end">
+      <text className="chart-axis solar" x={w - padR - 255} y={padT - 2} textAnchor="end">
         {maxS.toFixed(1)} MW
       </text>
       <polyline className="spark-solar" fill="none" stroke="#4fc3f7" strokeWidth="1.8" points={poly(solar, yS)} />
