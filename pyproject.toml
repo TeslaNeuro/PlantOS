@@ -10,10 +10,10 @@ readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.11"
 authors = [
-    { name = "TeslaNeuro", email = "arshiakeshvariasl@gmail.com" },
+    { name = "TeslaNeuro" },
 ]
 maintainers = [
-    { name = "TeslaNeuro", email = "arshiakeshvariasl@gmail.com" },
+    { name = "TeslaNeuro" },
 ]
 keywords = [
     "mpc",

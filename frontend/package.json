@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.2.0",
   "license": "MIT",
-  "author": "TeslaNeuro <arshiakeshvariasl@gmail.com>",
+  "author": "TeslaNeuro",
   "description": "PlantOS operations console — live controller compare for the digital twin",
   "type": "module",
   "scripts": {

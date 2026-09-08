@@ -25,7 +25,7 @@ app = FastAPI(
     title="PlantOS",
     version=__version__,
     description="Autonomous plant operations API — digital twin, MPC, and FDD.",
-    contact={"name": "TeslaNeuro", "email": "arshiakeshvariasl@gmail.com"},
+    contact={"name": "TeslaNeuro", "url": "https://github.com/TeslaNeuro"},
     license_info={"name": "MIT", "url": "https://opensource.org/licenses/MIT"},
 )
 app.add_middleware(

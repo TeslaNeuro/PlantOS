@@ -1,9 +1,9 @@
 <p align="center">
-  <img src="docs/assets/banner.svg" alt="PlantOS — autonomous plant operations" width="920" />
+  <img src="docs/assets/banner.png" alt="PlantOS — autonomous plant operations" width="920" />
 </p>
 
 <p align="center">
-  <img src="docs/assets/logo.svg" alt="PlantOS logo" width="72" />
+  <img src="docs/assets/logo.png" alt="PlantOS logo" width="72" />
 </p>
 
 <h1 align="center">PlantOS</h1>
@@ -14,9 +14,9 @@
 </p>
 
 <p align="center">
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-4fc3f7.svg" alt="MIT license" /></a>
-  <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.11%2B-3ddc97.svg" alt="Python 3.11+" /></a>
-  <img src="https://img.shields.io/badge/control-MPC%20%7C%20rules%20%7C%20naive-e8c547.svg" alt="Controllers" />
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-4fc3f7.png" alt="MIT license" /></a>
+  <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.11%2B-3ddc97.png" alt="Python 3.11+" /></a>
+  <img src="https://img.shields.io/badge/control-MPC%20%7C%20rules%20%7C%20naive-e8c547.png" alt="Controllers" />
 </p>
 
 ---
@@ -53,7 +53,7 @@ The platform keeps two worlds on purpose:
 The controller **never** receives the actual future weather. If it looks clever, it earned it.
 
 <p align="center">
-  <img src="docs/assets/architecture.svg" alt="PlantOS closed-loop architecture" width="820" />
+  <img src="docs/assets/architecture.png" alt="PlantOS closed-loop architecture" width="820" />
 </p>
 
 ## 🚀 Quick start
@@ -142,7 +142,7 @@ Every simulation step checks power balance, mass balance, SOC limits, ramp limit
 
 ## 👤 Author
 
-**TeslaNeuro** — [GitHub](https://github.com/TeslaNeuro) · [email](mailto:arshiakeshvariasl@gmail.com)
+**TeslaNeuro** — [GitHub](https://github.com/TeslaNeuro)
 
 ## 📜 License
 
