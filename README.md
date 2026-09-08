@@ -14,12 +14,12 @@
 </p>
 
 <p align="center">
-  <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-4fc3f7?style=flat-square" /></a>
-  <img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-3ddc97?style=flat-square&logo=python&logoColor=white" />
-  <img alt="FastAPI" src="https://img.shields.io/badge/API-FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" />
-  <img alt="React console" src="https://img.shields.io/badge/console-React-61DAFB?style=flat-square&logo=react&logoColor=black" />
+  <a href="https://opensource.org/license/mit"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-4fc3f7?style=flat-square" /></a>
+  <a href="https://www.python.org/"><img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-3ddc97?style=flat-square&logo=python&logoColor=white" /></a>
+  <a href="https://fastapi.tiangolo.com/"><img alt="FastAPI" src="https://img.shields.io/badge/API-FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" /></a>
+  <a href="https://react.dev/"><img alt="React console" src="https://img.shields.io/badge/console-React-61DAFB?style=flat-square&logo=react&logoColor=black" /></a>
   <img alt="Controllers" src="https://img.shields.io/badge/control-MPC%20%7C%20rules%20%7C%20naive-e8c547?style=flat-square" />
-  <img alt="Docker" src="https://img.shields.io/badge/docker-compose-2496ED?style=flat-square&logo=docker&logoColor=white" />
+  <a href="https://docs.docker.com/compose/"><img alt="Docker" src="https://img.shields.io/badge/docker-compose-2496ED?style=flat-square&logo=docker&logoColor=white" /></a>
 </p>
 
 ---
@@ -36,7 +36,7 @@ It does not only chase a production setpoint. It **reconfigures** — isolate, d
 ## ✨ Highlights
 
 - ⚡ **Physics digital twin** — PV, battery, electrolyser, CO₂ capture, methanation, thermal states
-- 🎯 **Receding-horizon MPC** — linear program via HiGHS (`scipy.optimize.linprog`)
+- 🎯 **Receding-horizon MPC** — linear program via [HiGHS](https://highs.dev/) ([SciPy](https://scipy.org/) `linprog`)
 - 🌦️ **Imperfect forecasts** — bias, AR(1) noise, and forecast dropouts
 - 🩺 **Model-based FDD** — residuals, persistence, competing hypotheses
 - 🛡️ **Autonomous recovery** — isolation, derating, graceful operating modes
@@ -142,6 +142,40 @@ pytest -q
 ```
 
 Every simulation step checks power balance, mass balance, SOC limits, ramp limits, and isolated equipment.
+
+## 📦 Dependencies
+
+Runtime packages link to their official sites:
+
+<p>
+  <a href="https://www.python.org/"><img alt="Python" src="https://img.shields.io/badge/Python-3.11%2B-3776AB?style=flat-square&logo=python&logoColor=white" /></a>
+  <a href="https://numpy.org/"><img alt="NumPy" src="https://img.shields.io/badge/NumPy-013243?style=flat-square&logo=numpy&logoColor=white" /></a>
+  <a href="https://scipy.org/"><img alt="SciPy" src="https://img.shields.io/badge/SciPy-8CAAE6?style=flat-square&logo=scipy&logoColor=white" /></a>
+  <a href="https://docs.pydantic.dev/"><img alt="Pydantic" src="https://img.shields.io/badge/Pydantic-E92063?style=flat-square&logo=pydantic&logoColor=white" /></a>
+  <a href="https://pyyaml.org/"><img alt="PyYAML" src="https://img.shields.io/badge/PyYAML-CB171E?style=flat-square" /></a>
+  <a href="https://fastapi.tiangolo.com/"><img alt="FastAPI" src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" /></a>
+  <a href="https://www.uvicorn.org/"><img alt="Uvicorn" src="https://img.shields.io/badge/Uvicorn-499848?style=flat-square" /></a>
+  <a href="https://typer.tiangolo.com/"><img alt="Typer" src="https://img.shields.io/badge/Typer-2596BE?style=flat-square" /></a>
+  <a href="https://github.com/Kludex/python-multipart"><img alt="python-multipart" src="https://img.shields.io/badge/python--multipart-2F2F2F?style=flat-square" /></a>
+  <a href="https://highs.dev/"><img alt="HiGHS" src="https://img.shields.io/badge/HiGHS-solver-4fc3f7?style=flat-square" /></a>
+</p>
+
+Console:
+
+<p>
+  <a href="https://react.dev/"><img alt="React" src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black" /></a>
+  <a href="https://vite.dev/"><img alt="Vite" src="https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white" /></a>
+  <a href="https://www.typescriptlang.org/"><img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" /></a>
+</p>
+
+Dev / deploy:
+
+<p>
+  <a href="https://docs.pytest.org/"><img alt="pytest" src="https://img.shields.io/badge/pytest-0A9EDC?style=flat-square&logo=pytest&logoColor=white" /></a>
+  <a href="https://docs.docker.com/"><img alt="Docker" src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" /></a>
+</p>
+
+Versions live in [`pyproject.toml`](pyproject.toml) and [`frontend/package.json`](frontend/package.json).
 
 ## 👤 Author
 
