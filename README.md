@@ -14,9 +14,12 @@
 </p>
 
 <p align="center">
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-4fc3f7.png" alt="MIT license" /></a>
-  <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.11%2B-3ddc97.png" alt="Python 3.11+" /></a>
-  <img src="https://img.shields.io/badge/control-MPC%20%7C%20rules%20%7C%20naive-e8c547.png" alt="Controllers" />
+  <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-4fc3f7?style=flat-square" /></a>
+  <img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-3ddc97?style=flat-square&logo=python&logoColor=white" />
+  <img alt="FastAPI" src="https://img.shields.io/badge/API-FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" />
+  <img alt="React console" src="https://img.shields.io/badge/console-React-61DAFB?style=flat-square&logo=react&logoColor=black" />
+  <img alt="Controllers" src="https://img.shields.io/badge/control-MPC%20%7C%20rules%20%7C%20naive-e8c547?style=flat-square" />
+  <img alt="Docker" src="https://img.shields.io/badge/docker-compose-2496ED?style=flat-square&logo=docker&logoColor=white" />
 </p>
 
 ---
