@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Configurable fault injection.
 
 Faults modify plant physics (AppliedFaults) or the sensor bank. They are

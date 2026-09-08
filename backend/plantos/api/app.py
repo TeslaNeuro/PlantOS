@@ -1,4 +1,6 @@
-"""FastAPI control-room backend. Simulation logic is independent of the UI."""
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
+"""FastAPI operations API. Simulation logic does not import UI code."""
 
 from __future__ import annotations
 
@@ -9,6 +11,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
+from plantos import __version__
 from plantos.config import FaultSpec
 from plantos.experiments.runner import (
     compare_controllers,
@@ -18,7 +21,13 @@ from plantos.experiments.runner import (
 )
 from plantos.simulation.engine import SimulationResult, run_experiment
 
-app = FastAPI(title="PlantOS", version="0.1.0", description="Autonomous operations API")
+app = FastAPI(
+    title="PlantOS",
+    version=__version__,
+    description="Autonomous plant operations API — digital twin, MPC, and FDD.",
+    contact={"name": "TeslaNeuro", "email": "arshiakeshvariasl@gmail.com"},
+    license_info={"name": "MIT", "url": "https://opensource.org/licenses/MIT"},
+)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],

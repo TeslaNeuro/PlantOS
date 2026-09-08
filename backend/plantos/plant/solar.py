@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Photovoltaic generation.
 
 Model (standard engineering approximation, not a full optical/electrical cell model):

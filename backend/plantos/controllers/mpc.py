@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Receding-horizon MPC using a linear program (HiGHS via scipy).
 
 At each step the controller:

@@ -1,6 +1,8 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """CO2 capture / DAC-like supply.
 
-Remote plants in this prototype do not have a pipeline CO2 source. Capture is
+Remote islanded plants in this model do not have a pipeline CO2 source. Capture is
 modelled as an electrically driven unit:
 
     m_co2 = (P_mw * 1000 * capture_efficiency * health) / kwh_per_kg

@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Physical invariant checks.
 
 If an invariant fails, the simulation raises ``InvariantError``. These checks

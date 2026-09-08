@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Monte Carlo seed reproducibility (tiny draw, not the 100-run campaign)."""
 
 from __future__ import annotations

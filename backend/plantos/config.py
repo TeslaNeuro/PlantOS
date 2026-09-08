@@ -1,7 +1,9 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Typed configuration for plant, sensors, controller, simulation and experiments.
 
 Every experiment must bind a complete configuration plus a random seed so that
-results are reproducible. Invented numeric parameters are flagged in
+results are reproducible. Default numeric ratings are documented in
 ``docs/ASSUMPTIONS.md``.
 """
 
@@ -59,7 +61,7 @@ class BatteryConfig(BaseModel):
     soc_max: float = 0.95
     initial_soc: float = 0.55
     initial_soh: float = 1.0
-    # Degradation (invented, order-of-magnitude Li-ion). See ASSUMPTIONS.md.
+    # Degradation (order-of-magnitude Li-ion). See docs/ASSUMPTIONS.md.
     cycle_degradation_per_mwh: float = 2.5e-5
     calendar_degradation_per_hour: float = 1.5e-6
     temp_degradation_coeff: float = 0.04

@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Model-based fault detection.
 
 Compare a one-step digital-twin prediction (from controller belief and the

@@ -1,3 +1,8 @@
+/**
+ * PlantOS operations console.
+ * SPDX-License-Identifier: MIT
+ * Copyright (c) 2026 TeslaNeuro
+ */
 import { useEffect, useMemo, useState } from "react";
 import { compareSimulation } from "./api";
 import type { ComparePayload, EventRow, Reality } from "./types";

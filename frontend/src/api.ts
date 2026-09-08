@@ -1,3 +1,7 @@
+/**
+ * SPDX-License-Identifier: MIT
+ * Copyright (c) 2026 TeslaNeuro
+ */
 import type { ComparePayload, RunPayload } from "./types";
 
 const json = async <T>(path: string, init?: RequestInit): Promise<T> => {

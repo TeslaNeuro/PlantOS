@@ -1,6 +1,8 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Physical constants and documented modelling assumptions.
 
-All invented or simplified parameters used by the default plant are listed in
+Default plant ratings and simplified coefficients are listed in
 ``docs/ASSUMPTIONS.md``. Values here are SI-adjacent engineering units used
 consistently across the simulator (MW, MWh, kg, °C, hours).
 """

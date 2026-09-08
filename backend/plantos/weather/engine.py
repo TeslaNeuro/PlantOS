@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Synthetic European weather and an external-data interface.
 
 Clear-sky GHI uses a sine-elevation approximation (not a full REST2/Ineichen

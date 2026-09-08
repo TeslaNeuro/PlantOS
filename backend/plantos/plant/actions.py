@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Actuator commands issued by a controller.
 
 Commands are setpoints. The plant physics clip them to what is physically

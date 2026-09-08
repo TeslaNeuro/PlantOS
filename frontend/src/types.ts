@@ -1,3 +1,7 @@
+/**
+ * SPDX-License-Identifier: MIT
+ * Copyright (c) 2026 TeslaNeuro
+ */
 export type Reality = {
   hour: number;
   solar_power_mw: number;

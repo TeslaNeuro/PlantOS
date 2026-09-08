@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Decoupled Kalman-style state estimator.
 
 Each measured channel has a scalar constant-velocity / random-walk Kalman

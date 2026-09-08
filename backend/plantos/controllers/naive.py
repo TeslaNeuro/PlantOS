@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Naive baseline: if solar is present, run everything; ignore forecast, faults and degradation."""
 
 from __future__ import annotations

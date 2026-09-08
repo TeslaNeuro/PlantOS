@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Closed-loop simulator: reality, sensors, estimator, FDD, reconfiguration, control.
 
 The controller is never passed PlantState reality or future actual weather.

@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Named experiments, controller comparison, Monte Carlo, counterfactuals."""
 
 from __future__ import annotations

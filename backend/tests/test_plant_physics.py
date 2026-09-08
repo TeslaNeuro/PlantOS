@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Phase 1 — plant physics and invariant tests."""
 
 from __future__ import annotations

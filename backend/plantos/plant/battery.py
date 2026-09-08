@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Li-ion battery with SOC, SOH and a simplified degradation model.
 
 Energy balance (charge positive into the battery):
@@ -12,7 +14,7 @@ Energy balance (charge positive into the battery):
 Round-trip efficiency is η_ch * η_dis. Energy that fails the efficiency
 conversion is treated as heat, not as a free lunch.
 
-Degradation (invented, documented): throughput cycling plus a mild calendar
+Degradation (documented default): throughput cycling plus a mild calendar
 and temperature/SOC stress term. This is not a full SEI/rainflow model.
 """
 

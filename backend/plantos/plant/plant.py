@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Plant reality: one physics step given actuator commands and exogenous weather.
 
 This module is the only place that advances true plant state. Controllers must

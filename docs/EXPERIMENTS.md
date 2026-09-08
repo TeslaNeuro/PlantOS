@@ -47,7 +47,7 @@ See `experiments/results/compare_storm.json`.
 
 Monte Carlo smoke, n=8, seed 123: `experiments/results/monte_carlo_baseline_8.json`.
 
-These are **not** a 100-run campaign. Run `plantos monte-carlo --runs 100` for the distribution the brief asks for. Do not invent a 30% improvement.
+These are **not** a 100-run campaign. Run `plantos monte-carlo --runs 100` when you need a distribution. Quote numbers from a run you actually produced.
 
 ## Cascade test
 

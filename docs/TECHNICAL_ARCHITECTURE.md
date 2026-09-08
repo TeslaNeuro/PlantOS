@@ -1,11 +1,13 @@
 # Technical architecture
 
+The simulator is the plant. The API and console only *drive* and *display* it.
+
 ## Split between reality and belief
 
 `plantos.simulation.engine.Simulator` is the only place the two worlds meet.
 
-1. Fault engine applies scenario faults to **reality** and to the sensor bank.
-2. Forecast engine issues a noisy forecast from the actual future (the controller never sees that future).
+1. The fault engine applies scenario disturbances to **reality** and to the sensor bank.
+2. The forecast engine issues a noisy forecast from the actual future (the controller never sees that future).
 3. Sensors measure reality.
 4. The estimator updates **belief**.
 5. Fault detection compares belief + forecast-driven twin expectations to measurements.
@@ -14,6 +16,13 @@
 8. The controller computes an action from belief + forecast + reconfiguration.
 9. `step_plant` advances reality, clipping actions to physics.
 
+```
+Weather (actual) → Forecast engine (noisy)
+Plant reality    → Sensors → Estimator → Digital twin residuals
+                                      → FDD → Reconfiguration → Controller
+                                      → Actuators → Plant reality
+```
+
 ## Plant physics (`plantos.plant`)
 
 | Module | Role |
@@ -21,7 +30,7 @@
 | `solar.py` | STC derate, NOCT cell temperature, inverter clip, curtailment |
 | `battery.py` | SOC/SOH, efficiency, throughput degradation |
 | `electrolyser.py` | State machine, part-load specific energy, ramp, thermal |
-| `co2.py` | Electrical DAC-like capture |
+| `co2.py` | Electrical DAC-style capture |
 | `methanation.py` | Sabatier mass balance, thermal lag, storage tanks |
 | `plant.py` | Islanded power allocation, protection trips |
 | `invariants.py` | Hard checks each step |
@@ -37,26 +46,26 @@ If a controller over-commits from a wrong SOC estimate, protection sheds process
 
 ## Weather and forecast
 
-`weather.engine` generates synthetic European GHI/temperature. `weather.forecast.ForecastEngine` adds AR(1) error, bias and optional failure (over-confident clear sky).
+`weather.engine` generates synthetic mid-latitude GHI and temperature. `weather.forecast.ForecastEngine` adds AR(1) error, bias, and optional failure (over-confident clear sky).
 
 ## Estimation
 
 `SensorBank` corrupts selected channels. `StateEstimator` runs independent scalar Kalman filters. Tank levels are integrated from estimated flows, not read from reality. Health/SOH in belief are updated from diagnosis, not from hidden true health.
 
-Electrolyser **status** is treated as PLC feedback (the command path), which is standard and is not a future leak.
+Electrolyser **status** is treated as PLC feedback (the command path). That is not a leak of the future.
 
 ## Faults
 
-YAML-configurable injection (`FaultSpec`). Detection uses digital-twin residuals with persistence. Diagnosis compares equipment, sensor and weather hypotheses. Reconfiguration derates or isolates and later recovers after quiet residuals.
+YAML-configurable injection (`FaultSpec`). Detection uses digital-twin residuals with persistence. Diagnosis compares equipment, sensor, and weather hypotheses. Reconfiguration derates or isolates and later recovers after quiet residuals.
 
 ## Controllers
 
-See `docs/CONTROL_METHODOLOGY.md`.
+See [CONTROL_METHODOLOGY.md](CONTROL_METHODOLOGY.md).
 
 ## API
 
-FastAPI in `plantos.api.app`. Simulation logic does not import UI code. The frontend is a consumer.
+FastAPI in `plantos.api.app`. Simulation logic does not import UI code. The frontend is a consumer of HTTP.
 
 ## Reproducibility
 
-Every run binds: random seed, scenario YAML, controller, simulation `dt` and horizon. Identical seeds replay identical weather, forecast noise and sensor noise.
+Every run binds: random seed, scenario YAML, controller, simulation `dt`, and horizon. Identical seeds replay identical weather, forecast noise, and sensor noise.

@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Catalytic methanation (Sabatier) with thermal inertia and mass-balance limits.
 
 Stoichiometry (mass):

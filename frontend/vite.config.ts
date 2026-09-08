@@ -1,3 +1,7 @@
+/**
+ * SPDX-License-Identifier: MIT
+ * Copyright (c) 2026 TeslaNeuro
+ */
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 

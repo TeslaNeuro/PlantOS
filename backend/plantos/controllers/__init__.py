@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 from plantos.config import ControllerType, ExperimentConfig
 from plantos.controllers.base import Controller
 from plantos.controllers.mpc import MPCController

@@ -1,70 +1,101 @@
-# PlantOS
+<p align="center">
+  <img src="docs/assets/banner.svg" alt="PlantOS — autonomous plant operations" width="920" />
+</p>
 
-Autonomous self-healing control for a remote synthetic-fuel plant powered by intermittent solar.
+<p align="center">
+  <img src="docs/assets/logo.svg" alt="PlantOS logo" width="72" />
+</p>
 
-> **PlantOS does not simply optimise production. It continuously reconfigures the plant to remain productive when reality deviates from the expected operating plan.**
+<h1 align="center">PlantOS</h1>
 
-This is a research prototype, not an operational DCS. Every performance number in this repository is produced by the simulator. None are hard-coded.
+<p align="center">
+  <strong>Self-healing operations for a solar-powered synthetic-fuel plant.</strong><br />
+  Digital twin · receding-horizon MPC · fault diagnosis · live operations console
+</p>
 
-## Research question
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-4fc3f7.svg" alt="MIT license" /></a>
+  <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.11%2B-3ddc97.svg" alt="Python 3.11+" /></a>
+  <img src="https://img.shields.io/badge/control-MPC%20%7C%20rules%20%7C%20naive-e8c547.svg" alt="Controllers" />
+</p>
 
-Can an industrial plant remain productive and recover autonomously when renewable power is intermittent, forecasts are wrong, equipment degrades, sensors fail and human intervention is unavailable?
+---
 
-## What is implemented
+PlantOS keeps a remote power-to-methane site **productive when the world disagrees with the plan**: intermittent solar, wrong forecasts, degrading equipment, and sensor faults.
 
-1. Physics-based digital twin (PV, battery, electrolyser, CO₂ capture, methanation, thermal states)
-2. Renewable-aware scheduling
-3. Receding-horizon MPC (linear program, HiGHS)
-4. Forecast uncertainty (bias, AR(1) noise, forecast failure)
-5. Model-based fault detection (residuals + persistence)
-6. Competing-hypothesis diagnosis (equipment vs sensor vs weather)
-7. Autonomous isolation / derating / recovery
-8. Graceful degradation and operating modes
-9. Equipment degradation (battery SOH, stack health, thermal stress)
-10. Explainable decisions (machine-readable reason codes + operator text)
-11. Monte Carlo robustness testing and controller comparison
+It does not only chase a production setpoint. It **reconfigures** — isolate, derate, hold reserve, recover — so the plant still makes methane instead of waiting for a perfect day.
 
-## Reality vs belief
+```
+☀️ Weather  →  📡 Noisy forecast
+🏭 Plant    →  🧪 Sensors  →  🧠 Estimator  →  🩺 FDD  →  🎯 Controller  →  ⚙️ Actuators
+```
 
-The simulator keeps two worlds:
+## ✨ Highlights
 
-- **Reality** — true plant physics, true weather, injected faults
-- **Controller belief** — noisy sensors, a Kalman-style estimator, and an imperfect forecast
+- ⚡ **Physics digital twin** — PV, battery, electrolyser, CO₂ capture, methanation, thermal states
+- 🎯 **Receding-horizon MPC** — linear program via HiGHS (`scipy.optimize.linprog`)
+- 🌦️ **Imperfect forecasts** — bias, AR(1) noise, and forecast dropouts
+- 🩺 **Model-based FDD** — residuals, persistence, competing hypotheses
+- 🛡️ **Autonomous recovery** — isolation, derating, graceful operating modes
+- 🗣️ **Explainable actions** — machine-readable reason codes plus operator text
+- 🖥️ **Operations console** — live compare of naive / rules / PlantOS MPC
+- 📊 **Reproducible campaigns** — CLI experiments, Monte Carlo, counterfactuals
 
-The controller never receives the actual future weather.
+## 🧠 Reality vs belief
 
-## Quick start
+The platform keeps two worlds on purpose:
+
+| World | What it contains |
+|---|---|
+| **Reality** | True physics, true weather, injected disturbances |
+| **Belief** | Noisy sensors, a Kalman-style estimator, an imperfect forecast |
+
+The controller **never** receives the actual future weather. If it looks clever, it earned it.
+
+<p align="center">
+  <img src="docs/assets/architecture.svg" alt="PlantOS closed-loop architecture" width="820" />
+</p>
+
+## 🚀 Quick start
 
 ```bash
 python3 -m venv .venv
-source .venv/bin/activate
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -e ".[dev]" --config-settings editable_mode=compat
 pytest -q
 plantos simulate --scenario storm --controller mpc
 plantos compare --scenario storm
-plantos counterfactual --scenario storm
 ```
 
-Dashboard:
+### 🖥️ Operations console
 
 ```bash
-# terminal 1
+# terminal 1 — API
 plantos serve --port 8000
-# terminal 2
+
+# terminal 2 — console
 cd frontend && npm install && npm run dev
 ```
 
-Open http://localhost:5173. **Run compare** executes live simulations (naive / rules / MPC). It is not a canned animation.
+Open [http://localhost:5173](http://localhost:5173). **Run compare** executes live naive / rules / MPC simulations — not a canned animation.
 
-Docker:
+### 🐳 Docker
 
 ```bash
 docker compose up --build
 ```
 
-API on port 8000, console on port 5173.
+API on **8000**, console on **5173**.
 
-## CLI
+## 🎮 Controllers
+
+| Name | Emoji | Role |
+|---|---|---|
+| `naive` | 🌞 | Run process load when solar is present. No forecast, isolation, or recovery. |
+| `rules` | 📋 | Reserve, minimum run time, poor-weather starts, scarcity shedding. |
+| `mpc` | 🎯 | 24–48 h receding-horizon LP. This is PlantOS. |
+
+## 🧪 CLI
 
 ```bash
 plantos simulate --scenario storm --controller mpc
@@ -72,51 +103,49 @@ plantos compare --scenario storm
 plantos monte-carlo --runs 20 --scenario baseline
 plantos fault-test --type electrolyser_efficiency
 plantos counterfactual --scenario storm
+plantos serve --port 8000
 ```
 
-Scenarios live in `scenarios/`: `storm`, `cascade`, `baseline`.
+Scenarios live in [`scenarios/`](scenarios/): **storm**, **cascade**, **baseline**.
 
-## Architecture
+Results write to `experiments/results/`. Numbers in the console and CLI come from the simulator for that run.
 
-```
-Weather (actual) → Forecast engine (noisy)
-Plant reality    → Sensors → Estimator → Digital twin residuals
-                                      → FDD → Reconfiguration → Controller
-                                      → Actuators → Plant reality
-```
+## 📚 Documentation
 
-See `docs/TECHNICAL_ARCHITECTURE.md`.
-
-## Controllers
-
-| Name | Role |
+| Doc | What’s inside |
 |---|---|
-| `naive` | If solar is present, run everything. No forecast, isolation or recovery. |
-| `rules` | Reserve, min run time, poor-weather starts, scarcity shedding. |
-| `mpc` | 24–48 h receding-horizon LP. PlantOS. |
+| [Technical architecture](docs/TECHNICAL_ARCHITECTURE.md) | Twin, estimator, API, invariants |
+| [Control methodology](docs/CONTROL_METHODOLOGY.md) | Naive, rules, MPC formulation |
+| [Fault methodology](docs/FAULT_METHODOLOGY.md) | Injection, detection, diagnosis, recovery |
+| [Plant model](docs/ASSUMPTIONS.md) | Default parameters and modelling scope |
+| [Experiments](docs/EXPERIMENTS.md) | Survival score, storm / cascade / Monte Carlo |
+| [Operations console](docs/CONSOLE.md) | Dashboard walkthrough |
 
-## Experiments
+## 🏗️ Repository layout
 
-Results are written to `experiments/results/`. Do not quote numbers that you have not just generated.
+```
+backend/plantos/     Python package (physics, control, FDD, API, CLI)
+frontend/            React operations console
+scenarios/           YAML plant + weather + fault campaigns
+docs/                Architecture and methodology
+docker/              Backend and console images
+experiments/results/ CLI output (generated)
+```
 
-Storm test (10 days, seed 7) is the cinematic demo. Cascade injects stacked faults. Monte Carlo randomises weather, forecast error, faults, sensors and initial health.
-
-## Tests
+## 🔧 Tests
 
 ```bash
 pytest -q
 ```
 
-Invariant checks run inside every simulation step: power balance, mass balance, SOC limits, ramp-up limits, isolated equipment.
+Every simulation step checks power balance, mass balance, SOC limits, ramp limits, and isolated equipment.
 
-## Documentation
+## 👤 Author
 
-- `docs/TECHNICAL_ARCHITECTURE.md`
-- `docs/CONTROL_METHODOLOGY.md`
-- `docs/FAULT_METHODOLOGY.md`
-- `docs/ASSUMPTIONS.md`
-- `docs/EXPERIMENTS.md`
+**TeslaNeuro** — [GitHub](https://github.com/TeslaNeuro) · [email](mailto:arshiakeshvariasl@gmail.com)
 
-## Licence
+## 📜 License
 
-Research prototype. Parameters marked “invented” in the assumptions document are not manufacturer data.
+MIT. See [LICENSE](LICENSE).
+
+Default plant ratings in `docs/ASSUMPTIONS.md` are a **reference model** for this repository, not manufacturer datasheets.

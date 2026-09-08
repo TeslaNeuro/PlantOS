@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Noisy, biased, drifting and failing sensors.
 
 The controller never reads PlantState fields from reality. It only sees

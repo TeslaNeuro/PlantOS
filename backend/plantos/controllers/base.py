@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Controller interface. Controllers see belief + forecast, never reality."""
 
 from __future__ import annotations

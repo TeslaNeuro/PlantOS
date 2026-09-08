@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 from plantos.faults.detection import DetectionResult, FaultDetector
 from plantos.faults.diagnosis import Diagnosis, diagnose
 from plantos.faults.engine import FaultEngine

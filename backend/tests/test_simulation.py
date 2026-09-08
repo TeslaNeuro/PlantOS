@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Closed-loop integration: determinism, forecast isolation, MPC constraints."""
 
 from __future__ import annotations

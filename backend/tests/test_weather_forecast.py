@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Weather, forecast uncertainty, and the reality/belief split."""
 
 from __future__ import annotations

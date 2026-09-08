@@ -1,4 +1,9 @@
-"""PlantOS command-line interface."""
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
+"""PlantOS command-line interface.
+
+Author: TeslaNeuro
+"""
 
 from __future__ import annotations
 
@@ -17,7 +22,7 @@ from plantos.experiments.runner import (
     write_json,
 )
 
-app = typer.Typer(help="PlantOS — autonomous plant simulation and experiments.", add_completion=False)
+app = typer.Typer(help="PlantOS — simulate, compare, and operate the digital twin.", add_completion=False)
 OUT = Path("experiments/results")
 
 

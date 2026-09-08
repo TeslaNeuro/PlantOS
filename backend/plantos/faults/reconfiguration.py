@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Operating modes and autonomous reconfiguration.
 
 PlantOS does not shut the plant on every fault. It isolates the failed

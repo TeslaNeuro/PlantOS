@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Imperfect weather forecasts.
 
 The controller receives only this object — never the actual future weather.

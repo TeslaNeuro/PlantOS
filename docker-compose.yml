@@ -1,3 +1,7 @@
+# PlantOS stack — API on 8000, operations console on 5173.
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
+
 services:
   backend:
     build:

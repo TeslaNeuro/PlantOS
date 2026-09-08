@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Shared first-order thermal helper.
 
     T(t+dt) = T + dt * (heat_generation - cooling_coeff * (T - T_amb)) / thermal_mass

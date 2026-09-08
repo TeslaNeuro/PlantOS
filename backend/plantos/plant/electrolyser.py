@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """PEM-style electrolyser with a load-dependent efficiency curve and a state machine.
 
 Hydrogen production (kg/h):

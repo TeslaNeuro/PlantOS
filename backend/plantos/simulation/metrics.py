@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Plant Survival Score and run-level metrics.
 
 The score answers: how well did the plant remain productive under adversity?

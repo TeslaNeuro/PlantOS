@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Unified plant state.
 
 Reality and controller belief share this schema. The simulator keeps two

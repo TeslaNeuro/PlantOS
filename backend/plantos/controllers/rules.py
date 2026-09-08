@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Rule-based controller: reserve, min run time, forecast-aware starts, scarcity shedding."""
 
 from __future__ import annotations

@@ -1,5 +1,2 @@
 # SPDX-License-Identifier: MIT
 # Copyright (c) 2026 TeslaNeuro
-from plantos.api.app import app
-
-__all__ = ["app"]

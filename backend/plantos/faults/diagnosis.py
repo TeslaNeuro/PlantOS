@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Competing-hypothesis fault diagnosis.
 
 Do not label every residual as equipment failure. Compare four families:

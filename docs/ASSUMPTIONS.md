@@ -1,6 +1,6 @@
-# Assumptions
+# Plant model
 
-Every invented or simplified parameter is listed here. Do not treat these as measured plant data.
+Default ratings and simplified physics used by this repository. They are a **reference plant model** for simulation, not manufacturer datasheets or a site as-built.
 
 ## Scope of the physics
 
@@ -10,7 +10,7 @@ The plant is a **lumped hourly (or 15-minute) model** of a remote power-to-metha
 
 | Parameter | Default | Origin |
 |---|---|---|
-| Capacity | 12 MW | Invented, order-of-magnitude PtG |
+| Capacity | 12 MW | Default PtG-scale rating |
 | Derate | 0.86 | Typical soiling/mismatch/inverter |
 | Temperature coefficient | −0.004 /°C | Typical c-Si |
 | NOCT | 45 °C | Typical module |
@@ -21,12 +21,12 @@ The plant is a **lumped hourly (or 15-minute) model** of a remote power-to-metha
 
 | Parameter | Default | Origin |
 |---|---|---|
-| Energy | 24 MWh | Invented |
-| Charge/discharge | 6 MW | Invented |
+| Energy | 24 MWh | Default rating |
+| Charge/discharge | 6 MW | Default rating |
 | η_ch, η_dis | 0.95 | Typical Li-ion power conversion |
-| SOC band | 10–95% | Invented operating policy |
-| Cycle degradation | 2.5×10⁻⁵ / MWh | Invented order-of-magnitude |
-| Calendar degradation | 1.5×10⁻⁶ / h | Invented |
+| SOC band | 10–95% | Default operating policy |
+| Cycle degradation | 2.5×10⁻⁵ / MWh | Order-of-magnitude cycling term |
+| Calendar degradation | 1.5×10⁻⁶ / h | Order-of-magnitude calendar term |
 
 Round-trip efficiency is η_ch × η_dis. Lost energy is heat, not free electricity.
 
@@ -34,12 +34,12 @@ Round-trip efficiency is η_ch × η_dis. Lost energy is heat, not free electric
 
 | Parameter | Default | Origin |
 |---|---|---|
-| Rated power | 8 MW | Invented |
+| Rated power | 8 MW | Default rating |
 | Min stable | 1.6 MW (20%) | PEM-like |
 | Specific energy | 50 kWh/kg | ~66.7% LHV; optimistic system value |
 | Ramp | 4 MW/h | Hourly-resolution stand-in for faster real PEM |
 | Startup | 1 h + 0.4 MWh | Coarse; real PEM can be faster |
-| Part-load curve | 0.90 + 0.16x − 0.06x² | Invented BOP penalty |
+| Part-load curve | 0.90 + 0.16x − 0.06x² | Default BOP penalty |
 
 Hydrogen LHV = 33.33 kWh/kg (standard).
 
@@ -50,7 +50,7 @@ Modelled as electrically driven DAC-like supply for a remote site (no pipeline).
 | Parameter | Default | Origin |
 |---|---|---|
 | Specific energy | 2.0 kWh/kg | Optimistic solid-sorbent electrical equivalent |
-| Capture efficiency | 0.90 | Invented lumped factor |
+| Capture efficiency | 0.90 | Default lumped factor |
 | Max power | 2.2 MW | Sized to methanation |
 
 This does **not** resolve adsorbent beds, vacuum pumps or thermal regeneration.
@@ -64,10 +64,10 @@ Mass stoichiometry (standard molar masses):
 | Parameter | Default | Origin |
 |---|---|---|
 | Max CH₄ | 320 kg/h | Matches ~8 MW electrolysis |
-| Conversion | 0.97 | Invented |
-| Thermal time constant | 2 h | Invented first-order lag |
+| Conversion | 0.97 | Default conversion factor |
+| Thermal time constant | 2 h | First-order lag |
 | Min temperature | 220 °C | Order-of-magnitude Ni catalyst |
-| Aux power | 0.25 kWh/kg | Compressors/BOP, invented |
+| Aux power | 0.25 kWh/kg | Compressors / BOP |
 
 The reactor cannot jump to a new conversion instantly. That is deliberate.
 
@@ -85,7 +85,7 @@ Gaussian noise, bias, drift, freeze, fail. Decoupled Kalman filters — not a fu
 
 ## Fault detection
 
-Residual thresholds and persistence hours are invented. Hypothesis scores are **heuristic likelihoods**, not calibrated probabilities.
+Residual thresholds and persistence hours are tunable defaults. Hypothesis scores are **heuristic likelihoods**, not calibrated probabilities.
 
 ## MPC
 
@@ -95,9 +95,9 @@ Linear relaxation of commitment. Thermal states are not in the LP. Simultaneous 
 
 A configurable weighted index, not a physical observable. Production is scored against 40% of nameplate methanation over the run, not against the run’s own output (which would make every controller score 1.0 on production).
 
-## What this prototype is not
+## Safety and deployment scope
 
 - Not a certified safety system
 - Not a substitute for IEC 61850 / SIL protection
-- Not trained on real plant data
-- Not a claim that PlantOS has been deployed
+- Default parameters are not fitted to a specific site
+- The bundled API is for local / trusted use unless you add your own auth and TLS

@@ -2,9 +2,9 @@
 
 ## Naive
 
-If estimated solar > 0.25 MW, allocate all of it to the electrolyser then CO₂ capture, and set methanation load high. No forecast, no reserve, no isolation, no recovery.
+If estimated solar > 0.25 MW, allocate it to the electrolyser then CO₂ capture, and set methanation load high. No forecast, no reserve, no isolation, no recovery.
 
-This is a straw-man “run when the sun is up” policy. It under-uses the battery and restarts the stack every morning, so methane is low and curtailment is high. That is expected.
+This is the **baseline** “run when the sun is up” policy. It under-uses the battery and restarts the stack every morning, so methane is low and curtailment is high. That is expected.
 
 ## Rules
 
@@ -38,13 +38,10 @@ w_CH4 * methane
 
 Only the first hour is applied. The LP is rebuilt every step from **belief + forecast**.
 
-### Simplifications
+## Fallback
 
-- On/off commitment is relaxed. Minimum load is enforced when the first-hour action is applied.
-- Thermal states are not in the LP; the plant model still enforces them.
-- Hydrogen yield is linearised at believed specific energy.
-- If HiGHS reports infeasible, a reserve-aware fallback dispatch is used.
+If the LP is infeasible, PlantOS uses a reserve-aware dispatch rather than freezing the last command. Reason code: `mpc.fallback`.
 
-### Why this is still MPC
+## What the controller is allowed to know
 
-It is genuine receding-horizon control: a multi-hour plan is solved, the first action is executed, the plant moves, the problem is solved again with a new forecast and a new estimate. It is not a single open-loop schedule.
+Measurements (noisy), the estimator state, the forecast, current mode, isolation list, and derated capacities. Not: actual future GHI, hidden faults, or true SOH except as inferred.

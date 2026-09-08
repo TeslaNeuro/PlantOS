@@ -50,6 +50,6 @@ Naive does not use this layer. Rules and MPC do.
 
 Recovery: if equipment residuals stay quiet for 4 h, isolated units are offered back to the controller.
 
-## What we do not claim
+## Scope
 
-Hypothesis percentages are not calibrated posteriors. Detection thresholds are not SIL-rated. The value of the method is that it **distinguishes sensor, weather and equipment** instead of labelling every residual as a trip.
+Hypothesis percentages are not calibrated posteriors. Detection thresholds are not SIL-rated. The method **distinguishes sensor, weather, and equipment** instead of labelling every residual as a trip.

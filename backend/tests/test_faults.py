@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 TeslaNeuro
 """Fault injection, detection, diagnosis and mode transitions."""
 
 from __future__ import annotations
